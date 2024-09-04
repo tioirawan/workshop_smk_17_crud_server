@@ -14,16 +14,20 @@ class ItemController extends Controller
 
     public function addItem(Request $request)
     {
-        return "add item";
+        $data = $request->all();
+        return Item::create($data);
     }
 
     public function editItem(Request $request, $id)
     {
-        return "edit item";
+        $item = Item::find($id);
+        $data = $request->all();
+
+        return $item->update($data);
     }
 
     public function deleteItem(Request $request, $id)
     {
-        return "delete item";
+        return Item::destroy($id);
     }
 }
